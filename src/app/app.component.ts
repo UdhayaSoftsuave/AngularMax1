@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'First-App';
+  name = 'Angular';
+  names = ["udhaya" , "kumar" , "prasana"];
+  online = false;
+  show = false;
+  
+  
+  onclick() {
+    this.online = true;
+    this.show = true;
+  }
 }
