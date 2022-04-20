@@ -12,6 +12,7 @@ import { RecipeItemComponent } from './recipes/recepie-list/recipe-item/recipe-i
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { BasicDerective } from './Common/BaiscDerective';
+import { BetterBasicDirectiveDirective } from './Common/better-basic-directive.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BasicDerective } from './Common/BaiscDerective';
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    BasicDerective
+    BasicDerective,
+    BetterBasicDirectiveDirective
   ],
   imports: [
     BrowserModule,

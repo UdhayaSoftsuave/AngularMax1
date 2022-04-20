@@ -5,8 +5,9 @@
     </div>
     <div class="col-md-7">
         <app-recipe-detail *ngIf = "recipe; else noRecepie" [recepie] = "recipe"></app-recipe-detail>
-            <ng-template #noRecepie  >
+            <ng-template #noRecepie >
                 <p BasicDirective>No recepie is added </p>
+                <p appBetterBasicDirective>No recepie is added in better way </p>
             </ng-template>
     </div>
 </div>
