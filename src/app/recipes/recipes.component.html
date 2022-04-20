@@ -7,7 +7,7 @@
         <app-recipe-detail *ngIf = "recipe; else noRecepie" [recepie] = "recipe"></app-recipe-detail>
             <ng-template #noRecepie >
                 <p BasicDirective>No recepie is added </p>
-                <p appBetterBasicDirective>No recepie is added in better way </p>
+                <p appBetterBasicDirective [defaultColor]="'yellow'" [highlightColor] = "'green'">No recepie is added in better way </p>
             </ng-template>
     </div>
 </div>
