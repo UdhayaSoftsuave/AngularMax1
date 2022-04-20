@@ -15,5 +15,6 @@ export class RecipesComponent implements OnInit {
   onselect(value : RecepieModel){
     this.recipe = value;
   }
+  value = 678;
 
 }
