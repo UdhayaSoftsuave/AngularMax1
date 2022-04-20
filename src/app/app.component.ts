@@ -10,10 +10,15 @@ export class AppComponent {
   names = ["udhaya" , "kumar" , "prasana"];
   online = false;
   show = false;
+  SelectedTab = "Recipes";
   
   
   onclick() {
     this.online = true;
     this.show = true;
+  }
+
+  onselectColumn(value : string) {
+    this.SelectedTab = value;
   }
 }
