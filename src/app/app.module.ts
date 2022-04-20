@@ -13,6 +13,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { BasicDerective } from './Common/BaiscDerective';
 import { BetterBasicDirectiveDirective } from './Common/better-basic-directive.directive';
+import { CustomStructuralDirectiveDirective } from './Common/custom-structural-directive.directive';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { BetterBasicDirectiveDirective } from './Common/better-basic-directive.d
     ShoppingListComponent,
     ShoppingEditComponent,
     BasicDerective,
-    BetterBasicDirectiveDirective
+    BetterBasicDirectiveDirective,
+    CustomStructuralDirectiveDirective
   ],
   imports: [
     BrowserModule,
