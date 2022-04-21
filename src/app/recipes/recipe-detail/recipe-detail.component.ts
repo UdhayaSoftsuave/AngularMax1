@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ingredients } from 'src/app/Common/ingradient.model';
+import { ShoppingService } from 'src/app/shopping-list/shopping.service';
 import { RecepieModel } from '../recipe.model';
 
 @Component({
@@ -8,10 +10,18 @@ import { RecepieModel } from '../recipe.model';
 })
 export class RecipeDetailComponent implements OnInit {
 
-  constructor() { }
+  private ingredient! : ingredients[]
+  constructor( private shoppingService : ShoppingService ) { }
 
   ngOnInit(): void {
   }
   @Input() recepie!: RecepieModel;
+
+  onClick(){
+    this.ingredient =  this.recepie.ingredients;
+    for (const value of this.ingredient) {
+      this.shoppingService.addIngredients(value);
+    }
+  }
 
 }
