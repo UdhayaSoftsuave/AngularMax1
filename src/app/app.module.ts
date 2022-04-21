@@ -15,6 +15,9 @@ import { BasicDerective } from './Common/BaiscDerective';
 import { BetterBasicDirectiveDirective } from './Common/better-basic-directive.directive';
 import { CustomStructuralDirectiveDirective } from './Common/custom-structural-directive.directive';
 import { DropDown } from './Common/component.dropdown';
+import { RecepieService } from './recipes/recipe.service';
+import { ShoppingService } from './shopping-list/shopping.service';
+
 
 
 @NgModule({
@@ -37,7 +40,7 @@ import { DropDown } from './Common/component.dropdown';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [RecepieService ,ShoppingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
