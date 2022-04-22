@@ -9,6 +9,7 @@ import { RecepieModel } from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
 
   @Input() list!: RecepieModel;
+  @Input() indexes!: number;
 
   @Output() seletedRecepie = new EventEmitter<void>();
 
@@ -17,8 +18,5 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onselected(){
-    this.seletedRecepie.emit();
-  }
 
 }

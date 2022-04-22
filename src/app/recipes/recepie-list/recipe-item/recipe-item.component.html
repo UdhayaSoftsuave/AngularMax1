@@ -1,4 +1,6 @@
-<a  class="list-group-item clearfix" (click) = "onselected()">
+<a  class="list-group-item clearfix" 
+ [routerLink] = "[indexes]"
+ routerLinkActive = 'active'>
     <div class="pull-left">
         <h4 class="list-group-item-heading">{{list.name}}</h4>
         <p class="list-group-item-text">{{list.description}}</p>

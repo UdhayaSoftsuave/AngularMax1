@@ -4,16 +4,6 @@
         <app-recipe-list (selectedValue) = "onselect($event)"></app-recipe-list>
     </div>
     <div class="col-md-7">
-        <app-recipe-detail *ngIf = "recipe; else noRecepie" [recepie] = "recipe"></app-recipe-detail>
-            <ng-template #noRecepie >
-                <p *appCustomStructuralDirective ="true">No recepie is added </p>
-                <p appBetterBasicDirective [defaultColor]="'yellow'" [highlightColor] = "'green'">No recepie is added in better way </p>
-                <div [ngSwitch] = 'value'>
-                    <p *ngSwitchCase = '10'>value is 10</p>
-                    <p *ngSwitchCase = '20'>value is 20</p>
-                    <p *ngSwitchCase = '30'>value is 30</p>
-                    <p *ngSwitchDefault > value is Default</p>
-                </div>
-            </ng-template>
+        <router-outlet></router-outlet>
     </div>
 </div>

@@ -9,7 +9,6 @@ import { RecepieService } from '../recipe.service';
 })
 export class RecipeListComponent implements OnInit {
 
-  @Input() selectedRecepie: any ;
 
   @Output() selectedValue = new EventEmitter<RecepieModel>();
 
@@ -22,8 +21,5 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onselect(value :RecepieModel ){
-    this.selectedValue.emit(value);
-  }
 
 }

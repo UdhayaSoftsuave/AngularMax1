@@ -18,6 +18,7 @@ import { DropDown } from './Common/component.dropdown';
 import { RecepieService } from './recipes/recipe.service';
 import { ShoppingService } from './shopping-list/shopping.service';
 import { AppRoutes } from './app.component.routes';
+import { RecepieStartComponent } from './recipes/recepie-start/recepie-start.component';
 
 
 
@@ -34,7 +35,8 @@ import { AppRoutes } from './app.component.routes';
     BasicDerective,
     BetterBasicDirectiveDirective,
     CustomStructuralDirectiveDirective,
-    DropDown
+    DropDown,
+    RecepieStartComponent,
   ],
   imports: [
     BrowserModule,

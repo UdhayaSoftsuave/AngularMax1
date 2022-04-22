@@ -19,4 +19,7 @@ export class RecepieService {
     getRecipies(){
         return this.RecepieModels;
     }
+    getRecipiesById(id : number){
+        return this.RecepieModels.slice()[id];
+    }
 }
