@@ -17,6 +17,7 @@ import { CustomStructuralDirectiveDirective } from './Common/custom-structural-d
 import { DropDown } from './Common/component.dropdown';
 import { RecepieService } from './recipes/recipe.service';
 import { ShoppingService } from './shopping-list/shopping.service';
+import { AppRoutes } from './app.component.routes';
 
 
 
@@ -38,7 +39,8 @@ import { ShoppingService } from './shopping-list/shopping.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AppRoutes
   ],
   providers: [RecepieService ,ShoppingService],
   bootstrap: [AppComponent]

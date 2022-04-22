@@ -8,12 +8,11 @@
 
 <button [disabled]="online" (click) = "onclick()">Submit</button> -->
 
-<app-header (selected-Column) = "onselectColumn($event)" ></app-header>
+<app-header ></app-header>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-recipes *ngIf = "SelectedTab === 'Recipes'"></app-recipes>
-            <app-shopping-list *ngIf = "SelectedTab === 'Shopping'"></app-shopping-list>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
