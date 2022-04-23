@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecepieModel } from '../recipe.model';
 import { RecepieService } from '../recipe.service';
 
@@ -14,12 +15,18 @@ export class RecipeListComponent implements OnInit {
 
   RecepieModels :RecepieModel[] ;
   
-  constructor(private recepieService : RecepieService) { 
+  constructor(private recepieService : RecepieService,
+    private Activeroutes : ActivatedRoute,
+    private routes : Router) { 
     this.RecepieModels = recepieService.getRecipies();
   }
 
   ngOnInit(): void {
   }
-
+  onclickEvent(){
+    console.log(this.Activeroutes);
+    
+    this.routes.navigate(["new"] ,{relativeTo : this.Activeroutes , queryParamsHandling : 'preserve'});
+  }
 
 }

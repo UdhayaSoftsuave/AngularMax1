@@ -10,7 +10,7 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 const routes = [
     {path : "recipes" ,component : RecipesComponent , children :[
         {path : "" ,component : RecepieStartComponent },
-        {path : 'new' ,component : RecipeEditComponent },
+        {path : "new" ,component : RecipeEditComponent },
         {path : ':id' ,component : RecipeDetailComponent },
         {path : ':id/edit' ,component : RecipeEditComponent }
     ] },
