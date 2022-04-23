@@ -19,6 +19,7 @@ import { RecepieService } from './recipes/recipe.service';
 import { ShoppingService } from './shopping-list/shopping.service';
 import { AppRoutes } from './app.component.routes';
 import { RecepieStartComponent } from './recipes/recepie-start/recepie-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 
 
@@ -37,6 +38,7 @@ import { RecepieStartComponent } from './recipes/recepie-start/recepie-start.com
     CustomStructuralDirectiveDirective,
     DropDown,
     RecepieStartComponent,
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,
