@@ -10,6 +10,7 @@ import { ShoppingService } from '../shopping.service';
 })
 export class ShoppingEditComponent implements OnInit {
   genders = ['Male' , 'Female'];
+  @ViewChild('f', { static: true }) userdata!: NgForm;
 
   // @ViewChild('name', { static: true }) name!: ElementRef;
   // @ViewChild('amount', { static: true }) amount!: ElementRef;
@@ -31,11 +32,12 @@ export class ShoppingEditComponent implements OnInit {
   // }
   onsubmit(value : NgForm){
     console.log(value);
-    if (value.valid) {
-      this.ingedient = new ingredients(value.value.name , value.value.amount);
+    if (value.valid === true) {
+      this.ingedient = new ingredients(value.value.userdata.name , value.value.userdata.amount);
       this.shoppingService.addIngredients(this.ingedient);
+      this.userdata.reset();
     } else {
-      alert("fill the form correctly ")
+      alert("fill the form correctly")
     } 
   }
 
