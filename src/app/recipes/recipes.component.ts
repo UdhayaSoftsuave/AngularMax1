@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { filter, map, Observable, Subscription } from 'rxjs';
 import { RecepieModel } from './recipe.model';
 
 @Component({
@@ -26,7 +26,11 @@ export class RecipesComponent implements OnInit , OnDestroy {
         count++;
       },500);
   });
-  this.subcription = observe.subscribe((value: any) => {
+  this.subcription = observe.pipe(filter((data : any) => {
+    return data > 2;
+}),map((value : number) => {
+    return "Round : "+ value;
+  })).subscribe((value: any) => {
     console.log(value);
   },(value: any)=> {
       console.log(value);
