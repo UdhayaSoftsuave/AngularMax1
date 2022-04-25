@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <form (ngSubmit) = "onsubmit(f)" #f ="ngForm">
-            <div class="row">
+            <div class="row" ngModelGroup = "userdata" #userdata = 'ngModelGroup'>
                 <div class="col-sm-5 ">
                     <label for="name">Name</label>
                     <!-- <input type="text" name="name"class="form-control" #name > -->
@@ -21,6 +21,9 @@
                      #amount = 'ngModel'>
                     <span *ngIf = "!amount.valid && amount.touched" class = "ng-invalid-msg" >Enter valid amount</span>
                 </div>
+            </div>
+            <div class="row">
+                <span *ngIf = "!userdata.valid && userdata.touched" class = "ng-invalid-msg" >Enter valid userData</span>
             </div>
             <br>
             <div class="row">
