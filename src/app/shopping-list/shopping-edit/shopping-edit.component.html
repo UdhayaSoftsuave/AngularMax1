@@ -21,6 +21,9 @@
                      #amount = 'ngModel'>
                     <span *ngIf = "!amount.valid && amount.touched" class = "ng-invalid-msg" >Enter valid amount</span>
                 </div>
+                <div class="col-sm-3 radio" *ngFor = "let g of genders" >
+                    <input type="radio" name="gender" id = 'gender' [value] = "g" ngModel required ><label for="gender">{{g}}</label>
+                </div>
             </div>
             <div class="row">
                 <span *ngIf = "!userdata.valid && userdata.touched" class = "ng-invalid-msg" >Enter valid userData</span>

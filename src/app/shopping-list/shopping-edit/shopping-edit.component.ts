@@ -9,6 +9,7 @@ import { ShoppingService } from '../shopping.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit {
+  genders = ['Male' , 'Female'];
 
   // @ViewChild('name', { static: true }) name!: ElementRef;
   // @ViewChild('amount', { static: true }) amount!: ElementRef;
