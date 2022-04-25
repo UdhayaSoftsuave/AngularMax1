@@ -17,11 +17,22 @@ export class RecipesComponent implements OnInit , OnDestroy {
       let count = 0 ;
       setInterval(() => {
         observer.next(count)
+        if (count > 2 ) {
+          observer.complete();
+        }
+        if (count > 4 ) {
+          observer.error("count expires");
+        }
         count++;
       },500);
   });
   this.subcription = observe.subscribe((value: any) => {
-    // console.log(value);
+    console.log(value);
+  },(value: any)=> {
+      console.log(value);
+      alert("count expires");
+  } ,() => {
+    console.log("completed!");
   })
   }
   ngOnDestroy(): void {
