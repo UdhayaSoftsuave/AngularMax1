@@ -10,6 +10,7 @@ import { RecepieService } from '../recipe.service';
 })
 export class RecipeListComponent implements OnInit {
 
+  isSelected = false;
 
   @Output() selectedValue = new EventEmitter<RecepieModel>();
 
@@ -22,9 +23,13 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.recepieService.isSelected.subscribe(value => {
+      this.isSelected =value;
+    })
   }
   onclickEvent(){
     console.log(this.Activeroutes);
+    this.recepieService.isSelected.next(true);
     
     this.routes.navigate(["new"] ,{relativeTo : this.Activeroutes , queryParamsHandling : 'preserve'});
   }

@@ -1,7 +1,11 @@
+import { Subject } from "rxjs";
 import { ingredients } from "../Common/ingradient.model";
 import { RecepieModel } from "./recipe.model";
 
 export class RecepieService {
+    
+    isSelected = new Subject<boolean>();
+
     RecepieModels :RecepieModel[] = [
         new RecepieModel(
             'A Test1' 

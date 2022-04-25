@@ -9,3 +9,8 @@
         <app-recipe-item [list]="list" [indexes]="i" ></app-recipe-item>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12" *ngIf = "isSelected">
+        <h3>Add Recipe button is selected</h3>
+    </div>
+</div>
