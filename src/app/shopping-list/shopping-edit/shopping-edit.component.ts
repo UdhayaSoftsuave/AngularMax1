@@ -1,6 +1,6 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ingredients } from 'src/app/Common/ingradient.model';
+import { Component, OnInit} from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { ShoppingService } from '../shopping.service';
 
 @Component({
@@ -42,13 +42,14 @@ export class ShoppingEditComponent implements OnInit {
   // }
 
   genders = ['Male' , 'Female'];
+  forbiddenNames = ['udhaya@gmail.com'];
   signupForm !: FormGroup;
  
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       "userData" : new FormGroup({
-        'email' : new FormControl(null , [Validators.required , Validators.email]), 
+        'email' : new FormControl(null , [Validators.required , Validators.email , this.forbiddenName.bind(this)]), 
         'amount' : new FormControl(100 , [Validators.required]),
       }),
       'gender' : new FormControl('Male' , Validators.required)
@@ -60,5 +61,11 @@ export class ShoppingEditComponent implements OnInit {
   }
   
 
+forbiddenName(form : FormControl) {
+  if (!this.forbiddenNames.indexOf(form.value)) {
+    return {'nameIsForbidden' : true};
+  }
+  return null;
+}
 
 }
