@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ingredients } from 'src/app/Common/ingradient.model';
 import { ShoppingService } from '../shopping.service';
 
@@ -19,7 +19,7 @@ export class ShoppingEditComponent implements OnInit {
   // // ingredentAmount!: number;
   // ingedient!: ingredients;
 
-  // constructor(private shoppingService : ShoppingService) { }
+  constructor(private shoppingService : ShoppingService) { }
 
   // ngOnInit(): void {
   // }
@@ -43,9 +43,20 @@ export class ShoppingEditComponent implements OnInit {
 
   genders = ['Male' , 'Female'];
   signupForm !: FormGroup;
+ 
 
   ngOnInit(): void {
+    this.signupForm = new FormGroup({
+      "userData" : new FormGroup({
+        'email' : new FormControl(null , [Validators.required , Validators.email]), 
+        'amount' : new FormControl(100 , [Validators.required]),
+      }),
+      'gender' : new FormControl('Male' , Validators.required)
+    });
+  }
 
+  onclick(){
+    console.log(this.signupForm);
   }
   
 
