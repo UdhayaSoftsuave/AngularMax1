@@ -50,7 +50,7 @@
             <div class="row">
                 <div formGroupName = "userData">
                     <div class="col-sm-5 ">
-                        <label for="name">Email</label>
+                        <label for="name">Username</label>
                         <input type="text"
                          name="name"
                          class="form-control"  
@@ -67,7 +67,8 @@
                         <input type="number"
                          name="amount" 
                          class="form-control" 
-                        formControlName = "amount">
+                        formControlName = "amount"
+                        pattern="^[1-9]+[0-9]*$">
                         <span *ngIf = "!signupForm.get('userData.amount')?.valid && signupForm.get('userData.amount')?.touched ">Please enter Amount </span>
                     </div>
                 </div>

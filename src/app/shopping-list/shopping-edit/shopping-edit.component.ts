@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ingredients } from 'src/app/Common/ingradient.model';
 
 import { ShoppingService } from '../shopping.service';
 
@@ -17,7 +18,7 @@ export class ShoppingEditComponent implements OnInit {
 
   // // ingredentName!: string;
   // // ingredentAmount!: number;
-  // ingedient!: ingredients;
+  ingedient!: ingredients;
 
   constructor(private shoppingService : ShoppingService) { }
 
@@ -49,15 +50,19 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       "userData" : new FormGroup({
-        'email' : new FormControl(null , [Validators.required , Validators.email , this.forbiddenName.bind(this)]), 
+        'email' : new FormControl(null , [Validators.required  , this.forbiddenName.bind(this)]), 
         'amount' : new FormControl(100 , [Validators.required]),
       }),
-      'gender' : new FormControl('Male' , Validators.required)
+      'gender' : new FormControl('Male' )
     });
   }
 
   onclick(){
     console.log(this.signupForm);
+    this.ingedient = new ingredients(this.signupForm.get('userData.email')?.value , this.signupForm.get('userData.amount')?.value);
+      this.shoppingService.addIngredients(this.ingedient);
+      this.signupForm.reset();
+    
   }
   
 
