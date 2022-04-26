@@ -11,6 +11,7 @@ import { ShoppingService } from './shopping.service';
 export class ShoppingListComponent implements OnInit {
 
   ingredient : ingredients[] ;
+  SingleIngredient!: ingredients;
 
   constructor(private shoppingService :ShoppingService) { 
     this.ingredient = this.shoppingService.getIngredients();
@@ -22,6 +23,10 @@ export class ShoppingListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onEdit(value : number){
+    this.shoppingService.OnEditIngredients.next(value);
   }
 
 }

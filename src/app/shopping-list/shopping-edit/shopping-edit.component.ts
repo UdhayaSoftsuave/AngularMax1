@@ -45,6 +45,9 @@ export class ShoppingEditComponent implements OnInit {
   genders = ['Male' , 'Female'];
   forbiddenNames = ['udhaya@gmail.com'];
   signupForm !: FormGroup;
+  isEdit = false;
+  oldValue !: ingredients;
+  indexvalue !: number;
  
 
   ngOnInit(): void {
@@ -55,14 +58,32 @@ export class ShoppingEditComponent implements OnInit {
       }),
       'gender' : new FormControl('Male' )
     });
+    this.shoppingService.OnEditIngredients.subscribe(
+      (value : number) => {
+        this.isEdit = true;
+        this.indexvalue = value;
+        this.oldValue = this.shoppingService.getByIndex(value);
+        this.signupForm = new FormGroup({
+          "userData" : new FormGroup({
+            'email' : new FormControl(this.oldValue.name , [Validators.required  , this.forbiddenName.bind(this)]), 
+            'amount' : new FormControl(this.oldValue.amount, [Validators.required]),
+          }),
+          'gender' : new FormControl('Male')
+        });
+      }
+    ) 
   }
 
   onclick(){
     console.log(this.signupForm);
     this.ingedient = new ingredients(this.signupForm.get('userData.email')?.value , this.signupForm.get('userData.amount')?.value);
+    if (this.isEdit) {
+      this.shoppingService.editIngredients(this.indexvalue ,this.ingedient );
+      this.isEdit = false;
+    }else{
       this.shoppingService.addIngredients(this.ingedient);
+    }
       this.signupForm.reset();
-    
   }
   
 
