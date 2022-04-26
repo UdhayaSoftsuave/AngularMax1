@@ -85,6 +85,18 @@ export class ShoppingEditComponent implements OnInit {
     }
       this.signupForm.reset();
   }
+
+  onClear(){
+    this.signupForm.reset();
+    this.isEdit = false;
+  }
+
+  onDelete(){
+    if (this.isEdit) {
+      this.shoppingService.deleteIngredients(this.indexvalue);
+      this.onClear();
+    }
+  }
   
 
 forbiddenName(form : FormControl) {

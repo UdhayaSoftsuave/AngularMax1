@@ -26,6 +26,11 @@ export class ShoppingService {
         this.ingredient[index] = value;
         this.changedIngredients.emit(this.ingredient);
     }
+    deleteIngredients(index : number ){
+        const ingredientAfterDeleted = this.ingredient.splice(index,1);
+        console.log(ingredientAfterDeleted);
+        this.changedIngredients.emit(this.ingredient);
+    }
 
 
 }
