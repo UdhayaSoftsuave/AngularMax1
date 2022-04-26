@@ -56,7 +56,11 @@
                          class="form-control"  
                          formControlName = "email"
                          >
-                         <span *ngIf = "!signupForm.get('userData.email')?.valid && signupForm.get('userData.email')?.touched ">Please enter the valid Email</span>
+                        <span *ngIf = "!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
+                             <span *ngIf ="signupForm.get('userData.email').errors['required']">Please fill reqiured Field </span>
+                             <span *ngIf ="signupForm.get('userData.email').errors['email']">Please fill email Field </span>
+                             <span *ngIf ="signupForm.get('userData.email').errors['nameIsForbidden']">Email Already taken</span>
+                        </span>
                     </div>
                     <div class="col-sm-2">
                         <label for="amount">Amount</label>
