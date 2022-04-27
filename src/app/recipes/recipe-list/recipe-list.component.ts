@@ -14,18 +14,23 @@ export class RecipeListComponent implements OnInit {
 
   @Output() selectedValue = new EventEmitter<RecepieModel>();
 
-  RecepieModels :RecepieModel[] ;
+  RecepieModels! :RecepieModel[] ;
   
   constructor(private recepieService : RecepieService,
     private Activeroutes : ActivatedRoute,
     private routes : Router) { 
-    this.RecepieModels = recepieService.getRecipies();
+    
   }
 
   ngOnInit(): void {
     this.recepieService.isSelected.subscribe(value => {
       this.isSelected =value;
     })
+    this.RecepieModels = this.recepieService.getRecipies();
+    this.recepieService.recepieChanges.subscribe(value => {
+      this.RecepieModels =value;
+    })
+
   }
   onclickEvent(){
     console.log(this.Activeroutes);

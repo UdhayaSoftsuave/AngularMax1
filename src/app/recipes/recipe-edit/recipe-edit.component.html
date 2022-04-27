@@ -34,18 +34,17 @@
                 </div>
             </div>
             <div class="row" >
-                <div class="col-md-12" formArrayName = "ingredients">
-                    <div  class="row" 
-                    *ngFor = "let ing of getIngredientsControl();let i = index" [formGroupName] = "i" 
-                     style="padding-top: 10px;">
+                <div class="col-md-12" formArrayName= "ingredients">
+                    <div class="row" *ngFor = "let ing of getIngredientsControl;let i = index" [formGroupName] = "i" 
+                         style="padding-top: 10px;">
                         <div class="col-md-8" >
-                            <input class="form-control" formControlName ="ingName" type="text" name="name"  >
+                             <input type="text" class="form-control" formControlName ="name"  name="name"  >
                         </div>
                         <div class="col-md-2">
-                            <input class="form-control" formControlName ="ingAmount" type="number" name="amount" >
+                             <input type="number" class="form-control" formControlName ="amount"  name="amount" >
                         </div> 
-                        <div class="col-md-2">
-                            <button class="btn btn-danger">X</button>
+                            <div class="col-md-2">
+                                <button type ="button" class="btn btn-danger">X</button>
                         </div>
                     </div>  
                 </div>

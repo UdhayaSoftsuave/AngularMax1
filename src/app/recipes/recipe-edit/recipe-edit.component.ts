@@ -18,7 +18,6 @@ export class RecipeEditComponent implements OnInit {
     
 
   ngOnInit(): void {
-    this.initForm();
     this.routes.params.subscribe(
       (param : Params) => {
         this.id = +param['id'];
@@ -32,7 +31,7 @@ export class RecipeEditComponent implements OnInit {
     let ProductName = '';
     let imageUrl = '';
     let description = '';
-    let ingredients = new FormArray([]);
+    let ingredientsArray = new FormArray([]);
     if (this.isEdit) {
       const recepie = this.recepieService.getRecipiesById(this.id);
       ProductName = recepie.name;
@@ -40,9 +39,9 @@ export class RecipeEditComponent implements OnInit {
       description = recepie.description;
       if (recepie.ingredients) {
         for (const ing of recepie.ingredients) {
-          ingredients.push(new FormGroup({
-            'ingName' : new FormControl(ing.name ,Validators.required),
-            'ingAmount' : new FormControl(ing.amount ,[Validators.required , Validators.pattern(/^[1-9]+[0-9]*$/)])
+          ingredientsArray.push(new FormGroup({
+            'name' : new FormControl(ing.name ,Validators.required),
+            'amount' : new FormControl(ing.amount ,[Validators.required , Validators.pattern(/^[1-9]+[0-9]*$/)])
           }))
         }
       }
@@ -51,22 +50,28 @@ export class RecipeEditComponent implements OnInit {
       'name' : new FormControl(ProductName , Validators.required),
       'imageUrl' : new FormControl(imageUrl ,Validators.required),
       'description' : new FormControl(description ,Validators.required),
-      'ingredients' : ingredients
+      'ingredients' : ingredientsArray
     });
   }
 
-  getIngredientsControl(){
-    const data = (this.product.controls["ingredients"] as FormArray).value;
+  get getIngredientsControl(){
+    const data = (<FormArray>this.product.get('ingredients')).controls; 
     return data;
   }
   onsubmit(){
-    console.log(this.product);
+    if (this.isEdit) {
+      this.recepieService.editRecipies(this.id,this.product.value);
+      console.log(this.product.value);
+    }else{
+      this.recepieService.addRecipies(this.product.value);
+      console.log(this.product.value);
+    }
   }
   onAddIngredients(){
     (<FormArray>this.product.get('ingredients')).push(
       new FormGroup({
-        'ingName' : new FormControl(null ,Validators.required),
-        'ingAmount' : new FormControl(null ,[Validators.required ])
+        'name' : new FormControl(null ,Validators.required),
+        'amount' : new FormControl(null ,[Validators.required])
       })
       )
   }

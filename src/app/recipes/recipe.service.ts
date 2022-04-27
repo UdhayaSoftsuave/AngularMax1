@@ -5,6 +5,7 @@ import { RecepieModel } from "./recipe.model";
 export class RecepieService {
     
     isSelected = new Subject<boolean>();
+    recepieChanges = new Subject<RecepieModel[]>();
 
     RecepieModels :RecepieModel[] = [
         new RecepieModel(
@@ -25,5 +26,14 @@ export class RecepieService {
     }
     getRecipiesById(id : number){
         return this.RecepieModels.slice()[id];
+    }
+    addRecipies(value : RecepieModel){
+        this.RecepieModels.push(value);
+        this.recepieChanges.next(this.RecepieModels);
+
+    }
+    editRecipies(index : number ,value : RecepieModel){
+        this.RecepieModels[index] = value;
+        this.recepieChanges.next(this.RecepieModels);
     }
 }
