@@ -41,5 +41,9 @@ export class RecipeDetailComponent implements OnInit {
   onClickEdit(){
     this.routes.navigate(["edit"] , {relativeTo : this.route ,queryParamsHandling : 'preserve'});
   }
+  onClickEditDelete(){
+    this.recepieService.deleteRecipies(this.id);
+    this.routes.navigate(['../'] , {relativeTo : this.route});
+  }
 
 }

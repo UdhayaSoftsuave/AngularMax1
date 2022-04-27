@@ -36,4 +36,9 @@ export class RecepieService {
         this.RecepieModels[index] = value;
         this.recepieChanges.next(this.RecepieModels);
     }
+
+    deleteRecipies(index : number ){
+        this.RecepieModels.splice(index,1);
+        this.recepieChanges.next(this.RecepieModels);
+    }
 }
